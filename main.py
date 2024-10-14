@@ -1,14 +1,9 @@
 import streamlit as st
-import requests
 
 # Tải nội dung HTML từ GitHub
 url = "https://raw.githubusercontent.com/lythanhdat21/Flowers/refs/heads/main/index.html"
-response = requests.get(url)
-
-# Kiểm tra nếu tải thành công
-if response.status_code == 200:
-    html_content = response.text
-    # Nhúng nội dung HTML vào Streamlit
-    st.components.v1.html(html_content, height=600, scrolling=True)
-else:
-    st.error("Không thể tải file HTML từ GitHub.")
+# Nhúng file HTML qua iframe
+st.markdown(
+    f'<iframe src="{html_url}" width="800" height="600" frameborder="0"></iframe>',
+    unsafe_allow_html=True,
+)
