@@ -1,14 +1,13 @@
 import streamlit as st
+import streamlit.components.v1 as components  # Nhập components module
 import requests
 
-# Tải nội dung HTML từ GitHub
+# Tải file HTML từ GitHub
 url = "https://raw.githubusercontent.com/lythanhdat21/Flowers/refs/heads/main/index.html"
 response = requests.get(url)
 
-# Kiểm tra nếu tải thành công
 if response.status_code == 200:
     html_content = response.text
-    # Nhúng nội dung HTML vào Streamlit
-    st.components.v1.html(html_content, height=600, scrolling=True)
+    components.html(html_content, height=300, scrolling=True)  # Sử dụng components.html
 else:
     st.error("Không thể tải file HTML từ GitHub.")
